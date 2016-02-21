@@ -1,0 +1,70 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion rootProject.androidCompileSdkVersion
+    buildToolsVersion rootProject.androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId "org.fabiomsr.mitaller"
+        minSdkVersion rootProject.androidMinSdkVersion
+        targetSdkVersion rootProject.androidTargetSdkVersion
+        versionCode 2
+        versionName "0.2"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+
+    compile rootProject.androidLibs.appCompat
+    compile rootProject.androidLibs.recyclerview
+    compile rootProject.androidLibs.design
+    compile rootProject.androidLibs.cards
+
+    compile rootProject.libs.viewInjection
+    compile rootProject.libs.dependencyInjection
+    provided rootProject.libs.dependencyInjectionCompiler
+    provided rootProject.libs.dependencyInjectionAnnotation
+    compile rootProject.libs.rxAndroid
+    compile rootProject.libs.rxJava
+    compile rootProject.libs.superSlim
+    compile rootProject.libs.calligraphy
+
+    compile project(rootProject.modules.domain)
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+        transitive = true;
+    }
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/card_list_background">
+
+    <android.support.v7.widget.CardView
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="@dimen/margin_mini"
+        android:layout_margin="@dimen/margin_extra_mini"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_above="@+id/card_receipt_amounts"
+        android:background="@color/content_background"
+        android:layout_alignParentTop="true">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/receipt_concepts_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/card_receipt_amounts"
+            />
+
+    </android.support.v7.widget.CardView>
+
+    <FrameLayout
+        android:id="@+id/card_receipt_amounts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_list_background"
+        android:layout_alignParentBottom="true">
+
+        <include
+                 layout="@layout/card_receipt_amounts"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+
+                 android:paddingBottom="@dimen/margin_extra_small"
+                 android:layout_margin="@dimen/margin_extra_mini"
+            />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_concept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@drawable/ic_add_white_36dp"
+            />
+    </FrameLayout>
+</RelativeLayout>

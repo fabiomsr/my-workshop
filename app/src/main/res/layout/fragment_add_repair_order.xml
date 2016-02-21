@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_repair_order_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/card_list_background"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccentRepairOrder"
+        >
+
+        <TextView
+            style="@style/Title1_2"
+            android:id="@+id/before_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/fragment_add_receipt_back"
+            android:shadowDx="2.0"
+            android:shadowDy="2.0"
+            android:shadowRadius="1"
+            android:shadowColor="@color/title_two"
+            android:visibility="gone"
+            android:padding="@dimen/margin_extra_small"/>
+
+
+        <TextView
+            style="@style/Title1_2"
+            android:id="@+id/next_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:text="@string/fragment_add_receipt_next"
+            tools:ignore="RelativeOverlap"
+            android:shadowDx="2.0"
+            android:shadowDy="2.0"
+            android:shadowRadius="1"
+            android:shadowColor="@color/title_two"
+            android:padding="@dimen/margin_extra_small"
+            />
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/card_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_list_background">
+
+        <include android:id="@+id/card_edit_repair_order"
+                 layout="@layout/card_edit_receipt"/>
+
+        <include android:id="@+id/card_edit_repair_order_client"
+                 layout="@layout/card_edit_receipt_client"
+                 android:visibility="gone"/>
+
+        <include android:id="@+id/card_edit_repair_order_device"
+                 layout="@layout/card_edit_receipt_device"
+                 android:visibility="gone"/>
+
+        <include android:id="@+id/card_repair_order_photo"
+                 layout="@layout/card_receipt_photo"
+                 android:visibility="gone"/>
+
+    </FrameLayout>
+
+</LinearLayout>

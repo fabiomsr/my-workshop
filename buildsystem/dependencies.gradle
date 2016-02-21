@@ -1,0 +1,62 @@
+ext {
+    //Android
+    androidBuildToolsVersion = "23.0.1"
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 23
+    androidCompileSdkVersion = 23
+
+
+    // Android Libraries Versions
+    androidSdkVersion = '23.1.1'
+
+    // Third Party Libraries Versions
+    daggerVersion = '2.0.2'
+    javaxAnnotationVersion = '10.0-b28'
+    butterKnifeVersion = '7.0.1'
+
+    rxJavaVersion = '1.0.14'
+    rxAndroidVersion = '1.0.1'
+    gsonVersion = '2.3'
+    okHttpVersion = '2.5.0'
+
+    autoParcelVersion = '0.3.1'
+    rxJavaVersion = '1.1.0'
+    superSlimVersion = '0.4.13'
+    calligraphyVersion = '2.1.0'
+    realmIOVersion = '0.87.4'
+
+    androidLibs = [
+        appCompat: "com.android.support:appcompat-v7:$androidSdkVersion",
+        recyclerview: "com.android.support:recyclerview-v7:$androidSdkVersion",
+        design: "com.android.support:design:$androidSdkVersion",
+        cards: "com.android.support:cardview-v7:$androidSdkVersion",
+        /**
+         * HTTP is the way modern applications network. It’s how we exchange data & media.
+         * Doing HTTP efficiently makes your stuff load faster and saves bandwidth.
+         * @url http://square.github.io/okhttp/
+         * @license  Apache License Version 2.0 [https://github.com/square/okhttp/blob/master/LICENSE.txt]
+         */
+        annotations: "com.android.support:support-annotations:$androidSdkVersion"
+    ]
+
+
+    libs = [
+        dependencyInjection: "com.google.dagger:dagger:$daggerVersion",
+        dependencyInjectionCompiler: "com.google.dagger:dagger-compiler:$daggerVersion",
+        dependencyInjectionAnnotation: "org.glassfish:javax.annotation:$javaxAnnotationVersion",
+        viewInjection: "com.jakewharton:butterknife:$butterKnifeVersion",
+        dataClass: "com.github.frankiesardo:auto-parcel:$autoParcelVersion",
+        dataClassProcessor: "com.github.frankiesardo:auto-parcel-processor:$autoParcelVersion",
+        rxAndroid: "io.reactivex:rxandroid:$rxJavaVersion",
+        rxJava: "io.reactivex:rxjava:$rxJavaVersion",
+        superSlim: "com.tonicartos:superslim:$superSlimVersion",
+        calligraphy: "uk.co.chrisjenx:calligraphy:$calligraphyVersion",
+        realmIo: "io.realm:realm-android:$realmIOVersion"
+    ]
+
+    modules = [
+            domain: ':domain',
+            data: ':data',
+    ]
+
+}

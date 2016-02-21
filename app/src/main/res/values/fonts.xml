@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="font_path_bariol_bold"    translatable="false">fonts/Bariol_Bold.otf</string>
+    <string name="font_path_bariol_light"   translatable="false">fonts/Bariol_Light.otf</string>
+    <string name="font_path_bariol_regular" translatable="false">fonts/Bariol_Regular.otf</string>
+    <string name="font_path_bariol_thin"    translatable="false">fonts/Bariol_Thin.otf</string>
+</resources>

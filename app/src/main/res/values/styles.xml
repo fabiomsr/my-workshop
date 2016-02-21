@@ -1,0 +1,146 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="ReceiptTheme" parent="AppTheme.NoActionBar">
+        <item name="colorAccent">@color/colorAccentReceipt</item>
+    </style>
+
+    <style name="RepairOrderTheme" parent="AppTheme.NoActionBar">
+        <item name="colorAccent">@color/colorAccentRepairOrder</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+    <!-- Titles -->
+
+    <style name="Title1">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/title_one</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="Title1_2" parent="Title1">
+        <item name="android:textSize">16sp</item>
+        <item name="fontPath">@string/font_path_bariol_regular</item>
+    </style>
+
+    <style name="Title2">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/title_two</item>
+        <item name="fontPath">@string/font_path_bariol_light</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="Title2b" parent="Title2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/title_two_b</item>
+        <item name="fontPath">@string/font_path_bariol_light</item>
+    </style>
+
+
+    <style name="Title2c" parent="Title2">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/title_two_c</item>
+        <item name="fontPath">@string/font_path_bariol_light</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+
+    <!-- Cards  -->
+
+    <style name="CardHeader" parent="Title2c">
+        <item name="android:layout_marginTop">@dimen/margin_extra_mini</item>
+        <item name="android:layout_marginBottom">@dimen/margin_mini</item>
+
+        <item name="android:layout_marginLeft">@dimen/margin_extra_small</item>
+        <item name="android:layout_marginStart"
+              tools:targetApi="jelly_bean_mr1">@dimen/margin_extra_small
+        </item>
+    </style>
+
+    <style name="CardTitle" parent="Title2">
+        <item name="android:layout_marginTop">@dimen/margin_mini</item>
+        <item name="android:layout_marginBottom">@dimen/margin_mini</item>
+
+        <item name="android:layout_marginLeft">@dimen/margin_extra_small</item>
+        <item name="android:layout_marginStart"
+              tools:targetApi="jelly_bean_mr1">@dimen/margin_extra_small
+        </item>
+    </style>
+
+    <style name="CardContent" parent="Title2b">
+        <item name="android:layout_marginLeft">@dimen/margin_extra_small</item>
+        <item name="android:layout_marginStart"
+              tools:targetApi="jelly_bean_mr1">@dimen/margin_extra_small
+        </item>
+
+        <item name="android:layout_marginBottom">@dimen/margin_extra_mini</item>
+        <item name="android:inputType">textCapSentences</item>
+    </style>
+
+
+    <style name="CardContentTitle" parent="CardContent">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/title_two_c</item>
+    </style>
+
+    <style name="CardEditContent" parent="CardContent">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/edit_content</item>
+        <item name="android:textColorHint">@color/title_two_b</item>
+
+        <item name="android:layout_marginRight">@dimen/margin_extra_small</item>
+        <item name="android:layout_marginEnd"
+              tools:targetApi="jelly_bean_mr1">@dimen/margin_extra_small
+        </item>
+
+    </style>
+
+
+    <!-- Adapter Items-->
+
+    <style name="ItemTitle" parent="Title2">
+        <item name="android:layout_marginBottom">@dimen/margin_mini</item>
+
+        <item name="android:layout_marginLeft">@dimen/margin_extra_small</item>
+        <item name="android:layout_marginStart"
+              tools:targetApi="jelly_bean_mr1">@dimen/margin_extra_small
+        </item>
+    </style>
+
+    <style name="ItemContent" parent="Title2b">
+        <item name="android:layout_marginLeft">@dimen/margin_extra_small</item>
+        <item name="android:layout_marginStart"
+              tools:targetApi="jelly_bean_mr1">@dimen/margin_extra_small
+        </item>
+        <item name="android:inputType">textCapSentences</item>
+    </style>
+
+    <style name="ItemBigTitle" parent="Title2c">
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginRight">@dimen/margin_extra_small</item>
+        <item name="android:layout_marginEnd"
+              tools:targetApi="jelly_bean_mr1">@dimen/margin_extra_small
+        </item>
+
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center_vertical|end</item>
+    </style>
+
+
+</resources>

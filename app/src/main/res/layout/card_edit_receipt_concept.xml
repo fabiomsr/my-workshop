@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/CardHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/card_receipt_concept"/>
+
+            <TextView
+                style="@style/CardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/card_receipt_concept_code"/>
+
+            <EditText
+                style="@style/CardEditContent"
+                android:id="@+id/edit_receipt_concept_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edit_receipt_concept_code_hint"/>
+
+            <TextView
+                style="@style/CardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/card_receipt_concept_description"/>
+
+            <EditText
+                style="@style/CardEditContent"
+                android:id="@+id/edit_receipt_concept_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edit_receipt_concept_description_hint"/>
+
+            <TextView
+                style="@style/CardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/card_receipt_concept_count"/>
+
+            <EditText
+                style="@style/CardEditContent"
+                android:id="@+id/edit_receipt_concept_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edit_receipt_concept_count_hint"
+                android:inputType="number"/>
+
+            <TextView
+                style="@style/CardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/card_receipt_concept_amount"/>
+
+            <EditText
+                style="@style/CardEditContent"
+                android:id="@+id/edit_receipt_concept_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edit_receipt_concept_amount_hint"
+                android:inputType="numberDecimal"/>
+
+            <TextView
+                style="@style/CardHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/card_receipt_concept_total"/>
+
+            <TextView
+                style="@style/CardContentTitle"
+                android:id="@+id/edit_receipt_concept_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.00 €"
+                tools:ignore="HardcodedText"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</ScrollView>

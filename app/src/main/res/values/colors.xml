@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#252933</color>
+    <color name="colorPrimaryDark">#252933</color>
+    <color name="colorAccentReceipt">#fcb500</color>
+    <color name="colorAccentRepairOrder">#8BC34A</color>
+
+
+    <color name="receiptMonthSummaryBackground">#fcb500</color>
+    <color name="repairOrderMonthSummaryBackground">#8BC34A</color>
+    <color name="card_list_background">#F3F1E4</color>
+    <color name="content_background">#ffffff</color>
+
+
+    <color name="title_one">#ffffff</color>
+
+    <color name="title_two">#808384</color>
+    <color name="title_two_b">#aeaeae</color>
+    <color name="title_two_c">#3d3e4a</color>
+
+    <color name="edit_content">#00695C</color>
+
+    <color name="receipt_date_number">#00695C</color>
+    <color name="receipt_date_month">#8800695C</color>
+
+    <color name="repair_order_date_number">#01579B</color>
+    <color name="repair_order_date_month">#8801579B</color>
+
+
+
+</resources>

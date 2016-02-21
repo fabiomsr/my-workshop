@@ -1,0 +1,158 @@
+ext {
+    // Android config
+    androidBuildToolsVersion = '23.0.2'
+    androidMinSdkVersion = 14
+    androidTargetSdkVersion = 23
+    androidCompileSdkVersion = 23
+
+    // Android libraries
+    versionSupportLibrary = '23.1.1'
+    versionSupportAnnotations = '23.1.1'
+
+    // Third party Libraries
+    versionOrhanobut = '1.12'
+    versionDagger = '2.0'
+    versionDaggerCompiler = '2.0'
+    versionJavaxAnnotation = '10.0-b28'
+    versionGson = '2.5'
+    versionIntellJAnnotations = '12.0'
+    versionButterKnife = '7.0.1'
+    versionEventBus = '3.0.0'
+    versionRxJava = '1.1.0'
+    versionRxLifecycle = '0.4.0'
+    versionAutoParcel = '0.3.1'
+
+    // Test Libraries
+    versionJunit = '4.12'
+    versionMockito = '1.10.19'
+    versionHamcrest = '1.3'
+    versionPowerMockito = '1.6.2'
+
+
+
+    androidLibs = [
+            /**
+             * Android Support Library
+             * @link "http://developer.android.com/intl/es/tools/support-library/setup.html"
+             */
+            support: "com.android.support:support-v4:$rootProject.versionSupportLibrary",
+
+            /**
+             * Android Annotations Library
+             * @link "http://tools.android.com/tech-docs/support-annotations"
+             */
+            annotations: "com.android.support:support-annotations:$rootProject.versionSupportAnnotations"
+    ]
+
+    libs = [
+            /**
+             * Simple, pretty and powerful logger for android
+             * @link "https://github.com/orhanobut/logger"
+             * @license Apache 2.0 license [https://github.com/orhanobut/logger/blob/master/LICENSE]
+             */
+            logger : "com.github.orhanobut:logger:$rootProject.versionOrhanobut",
+
+            /**
+             * A fast dependency injector for Android
+             * @link "http://google.github.io/dagger"
+             * @license Apache 2.0 license [https://github.com/google/dagger/blob/master/LICENSE.txt]
+             */
+            dependencyInjection           : "com.google.dagger:dagger:$rootProject.versionDagger",
+            dependencyInjectionCompiler   : "com.google.dagger:dagger-compiler:$rootProject.versionDaggerCompiler",
+            dependencyInjectionAnnotations: "org.glassfish:javax.annotation:$rootProject.versionJavaxAnnotation",
+
+            /**
+             * Gson is a Java library that can be used to convert Java Objects into their JSON representation.
+             * It can also be used to convert a JSON string to an equivalent Java object.
+             * @link "https://github.com/google/gson"
+             * @license Apache 2.0 license [https://github.com/google/gson/blob/master/LICENSE]
+             */
+            json : "com.google.code.gson:gson:$rootProject.versionGson",
+
+            /**
+             * A set of annotations used for code inspection support and code documentation.
+             * @link "https://www.jetbrains.com/idea/help/annotating-source-code.html"
+             * @license Apache License 2
+             */
+            intelljAnnotations : "com.intellij:annotations:$rootProject.versionIntellJAnnotations",
+
+            /**
+             * Field and method binding for Android views which uses annotation processing to generate boilerplate code.
+             * @link "http://jakewharton.github.io/butterknife/"
+             * @license Apache License 2 [https://github.com/JakeWharton/butterknife/blob/master/LICENSE.txt]
+             */
+            butterKnife : "com.jakewharton:butterknife:$rootProject.versionButterKnife",
+
+            /**
+             * EventBus is a publish/subscribe event bus optimized for Android.
+             * @link "http://jakewharton.github.io/butterknife/"
+             * @license Apache License 2 [https://github.com/greenrobot/EventBus/blob/master/LICENSE]
+             */
+            eventBus : "org.greenrobot:eventbus:$rootProject.versionEventBus",
+
+            /**
+             * RxJava is a Java VM implementation of Reactive Extensions: a library for composing asynchronous
+             * and event-based programs by using observable sequences.
+             * @link "https://github.com/ReactiveX/RxJava"
+             * @license Apache License 2 [https://github.com/ReactiveX/RxJava/blob/1.x/LICENSE]
+             */
+            rxJava : "io.reactivex:rxjava:$rootProject.versionRxJava",
+
+            /**
+             * Android specific bindings for RxJava.
+             * @link "https://github.com/ReactiveX/RxAndroid"
+             * @license Apache License 2 [https://github.com/ReactiveX/RxAndroid/blob/master/LICENSE]
+             */
+            rxAndroid : "io.reactivex:rxandroid:$rootProject.versionRxJava",
+
+            /**
+             * The utilities provided here allow for automatic completion of sequences based on Activity or Fragment
+             * lifecycle events. This capability is useful in Android, where incomplete subscriptions
+             * can cause memory leaks..
+             * @link "https://github.com/trello/RxLifecycle"
+             * @license Apache License 2 [https://github.com/trello/RxLifecycle/blob/master/LICENSE]
+             */
+            rxLifecycle : "com.trello:rxlifecycle:$rootProject.versionRxLifecycle",
+
+            /**
+             * Port of Google AutoValue for Android with Parcelable generation goodies.
+             * @link "https://github.com/frankiesardo/auto-parcel"
+             * @license Apache License 2 [https://github.com/frankiesardo/auto-parcel/blob/master/LICENSE.txt]
+             */
+            autoParcel : "com.github.frankiesardo:auto-parcel:$rootProject.versionAutoParcel",
+            autoParcelProcessor : "com.github.frankiesardo:auto-parcel-processor:$rootProject.versionAutoParcel"
+    ]
+
+
+    testLibs = [
+            /**
+             * Framework to write repeatable tests.
+             * @link https://github.com/junit-team/junit
+             * @license Eclipse Public License - v 1.0 [https://github.com/junit-team/junit/blob/master/LICENSE-junit.txt]
+             */
+            junit : "junit:junit:$rootProject.versionJunit",
+
+            /**
+             * Tasty mocking framework for unit tests.
+             * @link http://site.mockito.org/
+             * @license The MIT License [https://github.com/mockito/mockito/blob/master/LICENSE]
+             */
+            mockito : "org.mockito:mockito-all:$rootProject.versionMockito",
+
+            /**
+             * Hamcrest is a library of matchers, which can be combined in to create flexible
+             * expressions of intent in tests.
+             * @link https://github.com/hamcrest/JavaHamcrest
+             * @license BSD License [https://github.com/hamcrest/JavaHamcrest/blob/master/LICENSE.txt]
+             */
+            hamcrest : "org.hamcrest:hamcrest-all:$rootProject.versionHamcrest",
+
+            /**
+             * PowerMock is a framework that extends other mock libraries such as Mockito with more powerful capabilities
+             * @link https://github.com/jayway/powermock
+             * @license Apache 2.0 license [https://github.com/jayway/powermock/blob/master/LICENSE.txt]
+             */
+            powerMockitoModule: "org.powermock:powermock-module-junit4:$rootProject.versionPowerMockito",
+            powerMockitoApi   : "org.powermock:powermock-api-mockito:$rootProject.versionPowerMockito"
+    ]
+}

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="org.fabiomsr.mitaller"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="UnusedAttribute"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name=".app.Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".module.home.HomeActivity"
+            android:label="@string/app_name"
+            android:theme="@style/ReceiptTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+
+
+        <!-- RECEIPTS -->
+
+
+        <activity
+            android:name=".module.receipt.detail.ReceiptDetailActivity"
+            android:label="@string/title_receipt_detail"
+            android:parentActivityName=".module.receipt.list.ReceiptListActivity"
+            android:theme="@style/ReceiptTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".module.receipt.list.ReceiptListActivity"/>
+        </activity>
+
+        <activity
+            android:name=".module.receipt.add.AddReceiptActivity"
+            android:label="@string/title_add_receipt"
+            android:parentActivityName=".module.home.HomeActivity"
+            android:theme="@style/ReceiptTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".module.home.HomeActivity"/>
+        </activity>
+
+        <activity
+            android:name=".module.concept.add.AddReceiptConceptActivity"
+            android:label="@string/title_add_receipt_concept"
+            android:theme="@style/ReceiptTheme">
+        </activity>
+        <activity
+            android:name=".module.receipt.edit.EditReceiptActivity"
+            android:label="@string/title_edit_receipt"
+            android:theme="@style/ReceiptTheme">
+        </activity>
+
+
+        <!-- REPAIR ORDERS -->
+        <activity
+            android:name=".module.repairorder.add.AddRepairOrderActivity"
+            android:label="@string/title_add_repair_order"
+            android:parentActivityName=".module.home.HomeActivity"
+            android:theme="@style/RepairOrderTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".module.home.HomeActivity"/>
+        </activity>
+
+
+        <activity
+            android:name=".module.repairorder.detail.RepairOrderDetailActivity"
+            android:label="@string/title_detail_repair_order"
+            android:parentActivityName=".module.receipt.list.ReceiptListActivity"
+            android:theme="@style/RepairOrderTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".module.receipt.list.ReceiptListActivity"/>
+        </activity>
+
+
+        <activity
+            android:name=".module.repairorder.edit.EditRepairOrderActivity"
+            android:label="@string/title_edit_repair_order"
+            android:theme="@style/RepairOrderTheme">
+
+        </activity>
+
+
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="8985b4aa0713a09ca65df5dcbfc99b9759c7bb1a"/>
+
+    </application>
+
+</manifest>
