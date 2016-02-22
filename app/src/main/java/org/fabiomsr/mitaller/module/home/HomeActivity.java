@@ -1,5 +1,7 @@
 package org.fabiomsr.mitaller.module.home;
 
+import android.Manifest;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,6 +21,8 @@ import butterknife.ButterKnife;
 
 public class HomeActivity extends BaseActivity
     implements NavigationView.OnNavigationItemSelectedListener {
+
+  private static final int REQUEST_WRITE_PERMISSION = 21;
 
   @Bind(R.id.home_content) View mView;
   @Bind(R.id.toolbar) Toolbar mToolbar;
@@ -42,7 +46,13 @@ public class HomeActivity extends BaseActivity
     navigationView.setNavigationItemSelectedListener(this);
 
     replaceFragment(R.id.home_content, new RepairOrderListFragment());
+
+    String[] permission = { Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      requestPermissions(permission, REQUEST_WRITE_PERMISSION);
+    }
   }
+
 
   @Override
   public void onBackPressed() {

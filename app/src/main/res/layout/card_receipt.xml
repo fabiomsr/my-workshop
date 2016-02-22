@@ -14,6 +14,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/card_receipt_label"
             style="@style/CardHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

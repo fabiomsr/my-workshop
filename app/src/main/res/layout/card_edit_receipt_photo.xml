@@ -20,6 +20,14 @@
             android:layout_height="wrap_content"
             android:text="@string/card_receipt_photo"/>
 
+        <TextView
+            android:id="@+id/receipt_device_photo_hint"
+            style="@style/CardContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_receipt_photo_add"
+            android:drawableTop="@drawable/ic_menu_camera"
+            android:layout_centerInParent="true"/>
 
         <ImageView
             android:id="@+id/receipt_device_photo"
@@ -29,6 +37,7 @@
             android:layout_gravity="center"
             android:layout_below="@+id/card_photo_header"
             android:layout_centerInParent="true"
+            android:visibility="gone"
             />
 
     </RelativeLayout>

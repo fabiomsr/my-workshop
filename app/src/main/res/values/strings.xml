@@ -67,4 +67,7 @@
     <string name="title_receipts">Facturas</string>
     <string name="delete_repair_order_warning">¿Realmente deseas eliminar esta orde de reparación?</string>
     <string name="delete_receipt_warning">¿Realmente deseas eliminar esta factura?</string>
+    <string name="repair_order_title">Orden de reparación</string>
+    <string name="card_receipt_photo">Foto</string>
+    <string name="card_receipt_photo_add">Añadir foto</string>
 </resources>

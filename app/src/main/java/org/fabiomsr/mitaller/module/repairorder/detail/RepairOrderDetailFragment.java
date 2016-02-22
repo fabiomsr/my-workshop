@@ -2,6 +2,7 @@ package org.fabiomsr.mitaller.module.repairorder.detail;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.fabiomsr.mitaller.R;
@@ -53,6 +55,8 @@ public class RepairOrderDetailFragment extends BaseFragment implements DetailRep
   @Bind(R.id.receipt_number) TextView mRepairOrderNumberView;
   @Bind(R.id.receipt_date)   TextView mRepairOrderDateView;
 
+  @Bind(R.id.card_receipt_label) TextView mRepairOrderTitle;
+
   @Bind(R.id.receipt_client_full_name) TextView mClientFullNameView;
   @Bind(R.id.receipt_client_nif)       TextView mClientNIFView;
   @Bind(R.id.receipt_client_address)   TextView mClientAddressView;
@@ -61,9 +65,11 @@ public class RepairOrderDetailFragment extends BaseFragment implements DetailRep
   @Bind(R.id.receipt_device_brand)   TextView mDeviceBrandView;
   @Bind(R.id.receipt_device_model)   TextView mDeviceModelView;
   @Bind(R.id.receipt_device_serial)  TextView mDeviceSerialView;
-
+  @Bind(R.id.receipt_device_photo)   ImageView mPhotoView;
 
   @Inject RepairOrderDetailPresenter mRepairOrderDetailPresenter;
+
+
 
 
   /**
@@ -119,6 +125,7 @@ public class RepairOrderDetailFragment extends BaseFragment implements DetailRep
     attachPresenter(mRepairOrderDetailPresenter);
     mRepairOrderDetailPresenter.attachViewContract(this);
     setHasOptionsMenu(true);
+    mRepairOrderTitle.setText(R.string.repair_order_title);
   }
 
   @Override
@@ -140,6 +147,8 @@ public class RepairOrderDetailFragment extends BaseFragment implements DetailRep
     mDeviceBrandView.setText(mRepairOrder.brand());
     mDeviceModelView.setText(mRepairOrder.model());
     mDeviceSerialView.setText(mRepairOrder.serial());
+
+    mPhotoView.setImageURI(Uri.parse(mRepairOrder.photoUri()));
   }
 
   @OnClick(R.id.edit_repair_order)

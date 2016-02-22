@@ -72,7 +72,6 @@ public class CardPagerController {
 
     if (mCurrentCardIndex == mCardViews.length - 1) {
       mNextCardView.setVisibility(View.GONE);
-      return;
     }
 
     View nextCard = mCardViews[mCurrentCardIndex];

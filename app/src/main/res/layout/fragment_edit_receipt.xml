@@ -13,7 +13,7 @@
         <include layout="@layout/card_edit_receipt"/>
         <include layout="@layout/card_edit_receipt_client"/>
         <include layout="@layout/card_edit_receipt_device"/>
-        <include layout="@layout/card_receipt_photo"/>
+        <include layout="@layout/card_edit_receipt_photo"/>
 
     </LinearLayout>
 </ScrollView>
