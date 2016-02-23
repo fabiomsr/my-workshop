@@ -11,12 +11,12 @@ import org.fabiomsr.mitaller.app.base.BaseActivity;
 import org.fabiomsr.mitaller.app.injection.module.ActivityModule;
 import org.fabiomsr.mitaller.domain.Client;
 import org.fabiomsr.mitaller.domain.Receipt;
-import org.fabiomsr.mitaller.module.receipt.add.AddReceiptDetailsFragment;
+import org.fabiomsr.mitaller.module.receipt.add.AddReceiptFragment;
 import org.fabiomsr.mitaller.module.receipt.edit.contract.EditReceiptViewContract;
 
 import javax.inject.Inject;
 
-public class EditReceiptDetailsFragment extends AddReceiptDetailsFragment implements EditReceiptViewContract {
+public class EditReceiptFragment extends AddReceiptFragment implements EditReceiptViewContract {
 
   private static final String ARGUMENT_RECEIPT = "receipt";
 
@@ -51,8 +51,8 @@ public class EditReceiptDetailsFragment extends AddReceiptDetailsFragment implem
   }
 
 
-  public static EditReceiptDetailsFragment newInstance(Receipt receipt) {
-    EditReceiptDetailsFragment fragment = new EditReceiptDetailsFragment();
+  public static EditReceiptFragment newInstance(Receipt receipt) {
+    EditReceiptFragment fragment = new EditReceiptFragment();
 
     Bundle args = new Bundle();
     args.putParcelable(ARGUMENT_RECEIPT, receipt);

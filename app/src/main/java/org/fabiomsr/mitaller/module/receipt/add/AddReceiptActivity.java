@@ -30,7 +30,7 @@ public class AddReceiptActivity extends BaseActivity {
     RepairOrder repairOrder = getIntent().getParcelableExtra(PARAM_REPAIR_ORDER);
 
     if(savedInstanceState == null) {
-      replaceFragment(R.id.add_receipt_container, AddReceiptDetailsFragment.newInstance(repairOrder));
+      replaceFragment(R.id.add_receipt_container, AddReceiptFragment.newInstance(repairOrder));
     }
   }
 

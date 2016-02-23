@@ -2,6 +2,7 @@ package org.fabiomsr.mitaller.module.receipt.add;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.fabiomsr.mitaller.R;
@@ -32,8 +34,10 @@ import org.fabiomsr.mitaller.module.receipt.add.adapter.ReceiptConceptsAdapter;
 import org.fabiomsr.mitaller.module.receipt.add.contract.AddReceiptViewContract;
 import org.fabiomsr.mitaller.navigation.Navigation;
 import org.fabiomsr.mitaller.utils.CalendarUtils;
+import org.fabiomsr.mitaller.utils.IntentUtils;
 import org.fabiomsr.mitaller.utils.StringUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -45,10 +49,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class AddReceiptDetailsFragment extends BaseFragment implements AddReceiptViewContract {
+public class AddReceiptFragment extends BaseFragment implements AddReceiptViewContract {
 
-  private static final String ARG_REPAIR_ORDER = "repair_order";
-  private static final int REQUEST_NEW_CONCEPT = 123;
+  private static final String ARG_REPAIR_ORDER      = "repair_order";
+  private static final int    REQUEST_NEW_CONCEPT   = 123;
+  private static final int    REQUEST_IMAGE_CAPTURE = 124;
 
   @Bind(R.id.add_receipt_container) protected View mContainerView;
 
@@ -73,6 +78,9 @@ public class AddReceiptDetailsFragment extends BaseFragment implements AddReceip
   @Bind(R.id.receipt_igic) protected      TextView mIgicView;
   @Bind(R.id.receipt_total) protected     TextView mTotalView;
 
+  @Bind(R.id.receipt_device_photo_hint) protected TextView  mPhotoHintView;
+  @Bind(R.id.receipt_device_photo) protected      ImageView mPhotoView;
+
   @Inject AddReceiptPresenter mAddReceiptPresenter;
 
   /**
@@ -86,10 +94,12 @@ public class AddReceiptDetailsFragment extends BaseFragment implements AddReceip
 
   private RepairOrder mRepairOrder;
 
+  private Uri mPhotoUri;
 
-  public static AddReceiptDetailsFragment newInstance(RepairOrder repairOrder){
-    AddReceiptDetailsFragment fragment = new AddReceiptDetailsFragment();
-    Bundle args = new Bundle();
+
+  public static AddReceiptFragment newInstance(RepairOrder repairOrder) {
+    AddReceiptFragment fragment = new AddReceiptFragment();
+    Bundle             args     = new Bundle();
     args.putParcelable(ARG_REPAIR_ORDER, repairOrder);
     fragment.setArguments(args);
     return fragment;
@@ -97,6 +107,7 @@ public class AddReceiptDetailsFragment extends BaseFragment implements AddReceip
 
   /**
    * Initialize dependency component
+   *
    * @return Initialized Component
    */
   @CheckResult(suggest = "#inject(AddReceiptDetailsFragment)")
@@ -154,7 +165,7 @@ public class AddReceiptDetailsFragment extends BaseFragment implements AddReceip
   protected void updateUI() {
     mReceiptNumberView.setText("--");
 
-    if(mRepairOrder != null){
+    if (mRepairOrder != null) {
       fillUI();
     }
   }
@@ -194,7 +205,7 @@ public class AddReceiptDetailsFragment extends BaseFragment implements AddReceip
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()){
+    switch (item.getItemId()) {
       case R.id.save_receipt:
         saveReceipt();
         return true;
@@ -208,19 +219,40 @@ public class AddReceiptDetailsFragment extends BaseFragment implements AddReceip
     Navigation.goToAddReceiptConcept(this, REQUEST_NEW_CONCEPT);
   }
 
+  @OnClick({R.id.receipt_device_photo_hint, R.id.receipt_device_photo})
+  public void onAddPhoto() {
+    File outputFile = mAddReceiptPresenter.createImageFile();
+    if (outputFile != null) {
+      mPhotoUri = Uri.fromFile(outputFile);
+      IntentUtils.takePicture(getContext(), this, REQUEST_IMAGE_CAPTURE, outputFile);
+    }
+  }
+
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
-    if(resultCode == Activity.RESULT_OK){
-      ReceiptConcept concept = data.getParcelableExtra(AddReceiptConceptActivity.RESULT_CONCEPT);
-      mReceiptConceptsAdapter.addConcept(concept);
-      calculateAmounts();
+    if (resultCode == Activity.RESULT_OK) {
+
+      switch (requestCode) {
+        case REQUEST_NEW_CONCEPT:
+          ReceiptConcept concept = data.getParcelableExtra(AddReceiptConceptActivity.RESULT_CONCEPT);
+          mReceiptConceptsAdapter.addConcept(concept);
+          calculateAmounts();
+          break;
+        case REQUEST_IMAGE_CAPTURE:
+          mPhotoView.setImageURI(mPhotoUri);
+          mPhotoView.setVisibility(View.VISIBLE);
+          mPhotoHintView.setVisibility(View.GONE);
+          break;
+      }
+
+
     }
 
   }
 
-  protected void calculateAmounts(){
+  protected void calculateAmounts() {
 
     ArrayList<ReceiptConcept> concepts = mReceiptConceptsAdapter.getConcepts();
 
@@ -229,7 +261,7 @@ public class AddReceiptDetailsFragment extends BaseFragment implements AddReceip
       subTotal += concept.totalAmount();
     }
 
-    float igic = subTotal * 0.07f;
+    float igic  = subTotal * 0.07f;
     float total = subTotal + igic;
 
     mSubTotalView.setText(getString(R.string.receipt_total_format, subTotal));
@@ -237,30 +269,30 @@ public class AddReceiptDetailsFragment extends BaseFragment implements AddReceip
     mTotalView.setText(getString(R.string.receipt_total_format, total));
   }
 
-  public void saveReceipt(){
+  public void saveReceipt() {
     mAddReceiptPresenter.loadNextReceiptNumber();
   }
 
-  protected Receipt createReceipt(){
+  protected Receipt createReceipt() {
     int number = Integer.parseInt(mReceiptNumberView.getText().toString());
 
     Date date = CalendarUtils.createDate(mReceiptDateView);
 
-    String name = mClientNameView.getText().toString();
-    String firstLastName = mClientFirstLastNameView.getText().toString();
+    String name           = mClientNameView.getText().toString();
+    String firstLastName  = mClientFirstLastNameView.getText().toString();
     String secondLastName = mClientSecondLastNameView.getText().toString();
-    String fullName = name + " " + firstLastName + " " + secondLastName;
-    String nif = mClientNIFView.getText().toString();
-    String address = mClientAddressView.getText().toString();
+    String fullName       = name + " " + firstLastName + " " + secondLastName;
+    String nif            = mClientNIFView.getText().toString();
+    String address        = mClientAddressView.getText().toString();
 
-    String subject = mDeviceSubjectView.getText().toString();
-    String brand = mDeviceBrandView.getText().toString();
-    String model = mDeviceModelView.getText().toString();
-    String serial = mDeviceSerialView.getText().toString();
-    String photoUri = "";
+    String subject  = mDeviceSubjectView.getText().toString();
+    String brand    = mDeviceBrandView.getText().toString();
+    String model    = mDeviceModelView.getText().toString();
+    String serial   = mDeviceSerialView.getText().toString();
+    String photoUri = mPhotoUri == null ? "" : mPhotoUri.getPath();
 
     ArrayList<ReceiptConcept> conceptsWithoutId = mReceiptConceptsAdapter.getConcepts();
-    ArrayList<ReceiptConcept>  concepts = new ArrayList<>(conceptsWithoutId.size());
+    ArrayList<ReceiptConcept> concepts          = new ArrayList<>(conceptsWithoutId.size());
 
     float subTotal = 0;
     for (int i = 0; i < conceptsWithoutId.size(); i++) {
@@ -269,14 +301,14 @@ public class AddReceiptDetailsFragment extends BaseFragment implements AddReceip
       concepts.add(ReceiptConcept.create(number + "_" + i, concept));
     }
 
-    float igic = subTotal * 0.07f;
+    float igic  = subTotal * 0.07f;
     float total = subTotal + igic;
 
     Client client = Client.create(name, firstLastName, secondLastName,
-        fullName, StringUtils.normalizeText(fullName), nif, address);
+                                  fullName, StringUtils.normalizeText(fullName), nif, address);
 
     return Receipt.create(number, client, date, subject,
-        brand, model, serial, photoUri, concepts, igic, subTotal, total, false);
+                          brand, model, serial, photoUri, concepts, igic, subTotal, total, false);
 
   }
 

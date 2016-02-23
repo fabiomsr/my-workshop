@@ -167,7 +167,7 @@ public class AddRepairOrderFragment extends BaseFragment implements AddRepairOrd
     String brand    = mDeviceBrandView.getText().toString();
     String model    = mDeviceModelView.getText().toString();
     String serial   = mDeviceSerialView.getText().toString();
-    String photoUri = mPhotoUri.getPath();
+    String photoUri = mPhotoUri == null ? "" : mPhotoUri.getPath();
 
     Client client = Client.create(name, firstLastName, secondLastName,
                                   fullName, StringUtils.normalizeText(fullName), nif, address);

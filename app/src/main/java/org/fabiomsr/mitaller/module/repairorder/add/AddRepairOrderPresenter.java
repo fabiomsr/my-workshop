@@ -1,8 +1,6 @@
 package org.fabiomsr.mitaller.module.repairorder.add;
 
-import android.os.Environment;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import org.fabiomsr.data.ReceiptDataStore;
 import org.fabiomsr.mitaller.app.base.Presenter;
@@ -10,11 +8,10 @@ import org.fabiomsr.mitaller.domain.RepairOrder;
 import org.fabiomsr.mitaller.domain.mapper.impl.RepairOrderMapper;
 import org.fabiomsr.mitaller.module.repairorder.add.contract.AddRepairOrderViewContract;
 import org.fabiomsr.mitaller.preferences.UserPreferences;
+import org.fabiomsr.mitaller.utils.FileSystemUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -29,7 +26,7 @@ public class AddRepairOrderPresenter extends Presenter<AddRepairOrderViewContrac
   private UserPreferences   mUserPreferences;
   private ReceiptDataStore  mReceiptDataStore;
   private RepairOrderMapper mMapper;
-  private SimpleDateFormat mDateFormat;
+  private SimpleDateFormat  mDateFormat;
 
 
   @Inject
@@ -59,23 +56,7 @@ public class AddRepairOrderPresenter extends Presenter<AddRepairOrderViewContrac
   }
 
   @Nullable
-  public File createImageFile()  {
-      // Create an image file name
-      String timeStamp = mDateFormat.format(new Date());
-      String imageFileName = "JPEG_" + timeStamp + "_";
-      File storageDir = Environment.getExternalStoragePublicDirectory(
-          Environment.DIRECTORY_PICTURES);
-
-    try {
-      return File.createTempFile(
-         imageFileName,  /* prefix */
-         ".jpg",         /* suffix */
-         storageDir      /* directory */
-     );
-    } catch (IOException e) {
-      Log.e(TAG, "createImageFile: ", e);
-    }
-
-    return null;
+  public File createImageFile() {
+    return FileSystemUtils.createImageFile();
   }
 }

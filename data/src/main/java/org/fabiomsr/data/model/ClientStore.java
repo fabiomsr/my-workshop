@@ -3,11 +3,9 @@ package org.fabiomsr.data.model;
 import android.support.annotation.NonNull;
 
 import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
 public class ClientStore extends RealmObject{
 
-  @PrimaryKey
   private String dni;
   private String name;
   private String firstLastName;

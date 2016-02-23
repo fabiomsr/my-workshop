@@ -73,7 +73,7 @@
                  android:visibility="gone"/>
 
         <include android:id="@+id/card_receipt_photo"
-                 layout="@layout/card_receipt_photo"
+                 layout="@layout/card_edit_receipt_photo"
                  android:visibility="gone"/>
 
     </FrameLayout>

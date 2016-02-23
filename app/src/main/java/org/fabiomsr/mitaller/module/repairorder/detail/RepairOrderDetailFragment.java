@@ -65,17 +65,16 @@ public class RepairOrderDetailFragment extends BaseFragment implements DetailRep
   @Bind(R.id.receipt_device_brand)   TextView mDeviceBrandView;
   @Bind(R.id.receipt_device_model)   TextView mDeviceModelView;
   @Bind(R.id.receipt_device_serial)  TextView mDeviceSerialView;
-  @Bind(R.id.receipt_device_photo)   ImageView mPhotoView;
+
+  @Bind(R.id.receipt_device_photo) ImageView mPhotoView;
 
   @Inject RepairOrderDetailPresenter mRepairOrderDetailPresenter;
-
-
-
 
   /**
    * Edit Repair Order Detail Component
    */
   private RepairOrderDetailComponent mEditRepairOrderComponent;
+
 
   /**
    * Initialize dependency component
@@ -148,13 +147,20 @@ public class RepairOrderDetailFragment extends BaseFragment implements DetailRep
     mDeviceModelView.setText(mRepairOrder.model());
     mDeviceSerialView.setText(mRepairOrder.serial());
 
-    mPhotoView.setImageURI(Uri.parse(mRepairOrder.photoUri()));
+    Uri photoUri = Uri.parse(mRepairOrder.photoUri());
+    mPhotoView.setImageURI(photoUri);
   }
 
   @OnClick(R.id.edit_repair_order)
   public void onEditRepairOrder() {
     Navigation.goToEditRepairOrder(getContext(), this, REQUEST_EDIT_REPAIR_ORDER, mRepairOrder);
   }
+
+  @OnClick(R.id.receipt_device_photo)
+  public void onOpenPhoto() {
+    Navigation.goToOpenPhoto(getContext(), mRepairOrder.photoUri());
+  }
+
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {

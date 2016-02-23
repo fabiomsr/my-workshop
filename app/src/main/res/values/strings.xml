@@ -70,4 +70,5 @@
     <string name="repair_order_title">Orden de reparación</string>
     <string name="card_receipt_photo">Foto</string>
     <string name="card_receipt_photo_add">Añadir foto</string>
+    <string name="title_photo">Foto</string>
 </resources>

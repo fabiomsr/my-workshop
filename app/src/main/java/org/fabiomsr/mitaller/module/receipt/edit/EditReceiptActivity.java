@@ -32,7 +32,7 @@ public class EditReceiptActivity extends BaseActivity {
 
     if(savedInstanceState == null) {
       replaceFragment(R.id.edit_receipt_pager_container,
-          EditReceiptDetailsFragment.newInstance(receipt));
+          EditReceiptFragment.newInstance(receipt));
     }
   }
 

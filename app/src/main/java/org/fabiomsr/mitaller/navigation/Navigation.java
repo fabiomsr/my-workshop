@@ -10,6 +10,7 @@ import org.fabiomsr.mitaller.domain.Receipt;
 import org.fabiomsr.mitaller.domain.RepairOrder;
 import org.fabiomsr.mitaller.module.concept.add.AddReceiptConceptActivity;
 import org.fabiomsr.mitaller.module.home.HomeActivity;
+import org.fabiomsr.mitaller.module.photo.PhotoActivity;
 import org.fabiomsr.mitaller.module.receipt.add.AddReceiptActivity;
 import org.fabiomsr.mitaller.module.receipt.detail.ReceiptDetailActivity;
 import org.fabiomsr.mitaller.module.receipt.edit.EditReceiptActivity;
@@ -68,6 +69,12 @@ public class Navigation {
     context.startActivity(intent);
   }
 
+  public static void goToOpenPhoto(Context context, String path) {
+    Intent intent = new Intent(context, PhotoActivity.class);
+    intent.putExtra(PhotoActivity.PARAM_PHOTO_URI, path);
+    context.startActivity(intent);
+  }
+
   ///
   ///  UP TO ...
   ///
@@ -83,6 +90,7 @@ public class Navigation {
   public static void upToAddReceipt(Activity activity){
     NavUtils.navigateUpTo(activity, new Intent(activity, AddReceiptActivity.class));
   }
+
 
 
 }

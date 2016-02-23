@@ -11,5 +11,5 @@ import dagger.Component;
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
 public interface EditReceiptComponent extends AbstractActivityComponent {
   void inject(EditReceiptActivity addReceiptActivity);
-  void inject(EditReceiptDetailsFragment addReceiptComponent);
+  void inject(EditReceiptFragment addReceiptComponent);
 }
